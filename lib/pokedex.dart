@@ -1,0 +1,1 @@
+// this file is for the getters and setters and all of the technical stuff 
