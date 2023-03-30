@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:pokedextest/home_screen.dart';
+import 'home_screen.dart';
 
 void main() {
-  runApp(Pokedex());
+  runApp(Pokemon());
 }
 
-class Pokedex extends StatelessWidget {
+class Pokemon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
