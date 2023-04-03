@@ -10,9 +10,16 @@
 // The user may press a "home button" to return to the main menu
 
 import 'package:flutter/material.dart';
+import 'package:pokedextest/util/checklist_tile.dart';
 
 // Pretend array to display da pokemon with TESTING ONLY
-var preMonNames = ["Eevee", "Gastly", "Meowth", "Gibble", "Darkrai"];
+List preMonNames = [
+  ["Eevee", false],
+  ["Gastly", false],
+  ["Meowth", false],
+  ["Gibble", false],
+  ["Darkrai", false]
+];
 
 /////////////
 /// List of habitats
@@ -47,42 +54,56 @@ var preMonNames = ["Eevee", "Gastly", "Meowth", "Gibble", "Darkrai"];
 /// ////////////
 ///
 ///
-///
-/// void main() {
+///\
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class HabitatConfirm extends StatefulWidget {
+  const HabitatConfirm({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => MyAppState(),
-      child: MaterialApp(
-        title: 'Namer App',
-        theme: ThemeData(
-          useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
-        ),
-        home: MyHomePage(),
-      ),
-    );
+  State<HabitatConfirm> createState() => _HabitatConfirmState();
+}
+
+class _HabitatConfirmState extends State<HabitatConfirm> {
+  //idx for listing each pokemon
+  int i = 0;
+  // checkbox is tapped
+  void checkboxChecked(bool? value, int idx) {
+    setState(() {
+      // the the box is "true"/ checked and it is tapped,
+      // toggle the box to "false"/ unchecked
+      if (preMonNames[idx][1] == true) {
+        preMonNames[idx][1] = false;
+      }
+      // the box is "false"/ unchecked
+      // toggle the box to "true"/checked
+      else {
+        preMonNames[idx][1] = true;
+      }
+    });
   }
-}
 
-class MyAppState extends ChangeNotifier {
-  var current = WordPair.random();
-}
-
-class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-
     return Scaffold(
-      body: Column(
+      // define the BG color of the whole page
+      backgroundColor: Colors.red[50],
+      // appBar on the top of the screen "title bar"
+      appBar: AppBar(
+        title: Text('A HABITAT NAME Checklist'),
+        //elevation: 0
+        // the above line will make the appbar flat. do we want this? <=============================================
+      ),
+      body: ListView(
         children: [
-          Text('A random idea:'),
-          Text(appState.current.asLowerCase),
+          // loops through every pokemon in a list of pokemon
+          // and creates a checkbox for them
+          
+          while (preMonNames[i+1] != null){
+            ChecklistTile(
+              pokeName: preMonNames[i][0],
+              pokeSeen: false,
+              onChanged: (value) => checkboxChecked(value,i),
+            ),}
         ],
       ),
     );
