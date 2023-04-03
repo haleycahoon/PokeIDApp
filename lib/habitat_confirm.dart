@@ -65,20 +65,17 @@ class HabitatConfirm extends StatefulWidget {
 
 class _HabitatConfirmState extends State<HabitatConfirm> {
   //idx for listing each pokemon
-  int i = 0;
   // checkbox is tapped
   void checkboxChecked(bool? value, int idx) {
     setState(() {
       // the the box is "true"/ checked and it is tapped,
       // toggle the box to "false"/ unchecked
-      if (preMonNames[idx][1] == true) {
-        preMonNames[idx][1] = false;
-      }
-      // the box is "false"/ unchecked
-      // toggle the box to "true"/checked
-      else {
-        preMonNames[idx][1] = true;
-      }
+
+      print("before" + preMonNames[idx][0]);
+      preMonNames[idx][1] ? print("true") : print("false");
+      preMonNames[idx][1] = !preMonNames[idx][1];
+      print("after" + preMonNames[idx][0]);
+      preMonNames[idx][1] ? print("true") : print("false");
     });
   }
 
@@ -93,18 +90,19 @@ class _HabitatConfirmState extends State<HabitatConfirm> {
         //elevation: 0
         // the above line will make the appbar flat. do we want this? <=============================================
       ),
-      body: ListView(
-        children: [
-          // loops through every pokemon in a list of pokemon
-          // and creates a checkbox for them
-          
-          while (preMonNames[i+1] != null){
-            ChecklistTile(
-              pokeName: preMonNames[i][0],
-              pokeSeen: false,
-              onChanged: (value) => checkboxChecked(value,i),
-            ),}
-        ],
+      body: ListView.builder(
+        itemCount: preMonNames.length,
+        itemBuilder: (context, i) {
+          return ChecklistTile(
+            pokeName: preMonNames[i][0],
+            pokeSeen: preMonNames[i][1],
+            onChanged: (value) => checkboxChecked(value, i),
+          );
+        }
+        // loops through every pokemon in a list of pokemon
+        // and creates a checkbox for them
+
+        ,
       ),
     );
   }
