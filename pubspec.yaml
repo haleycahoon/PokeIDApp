@@ -66,6 +66,6 @@ flutter:
 
 
 flutter_icons:
-  image_path: "images/pokeball.png"
+  image_path: "images/pokeball.jpg"
   android: true
   ios: true

@@ -11,7 +11,7 @@ class Pokemon extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: HabitatConfirm(),
+        home: HomeScreen(),
         theme: ThemeData(primarySwatch: Colors.red));
   }
 }
