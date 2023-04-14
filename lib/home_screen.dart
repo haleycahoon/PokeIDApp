@@ -36,11 +36,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: TextStyle(
                   color: Colors.black.withOpacity(0.6),
                   fontWeight: FontWeight.bold,
-                  fontSize: 40,
+                  fontSize: 20,
                 ),
               )),
           Positioned(
-              top: 450,
+              top: 200,
               left: 165,
               child: ElevatedButton(
                   child: const Text("Gen 1:"),
@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             builder: (context) => const Gen1Screen()));
                   })),
           Positioned(
-              top: 500,
+              top: 250,
               left: 165,
               child: ElevatedButton(
                   child: Text("Gen 2:"),
@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             builder: (context) => const Gen2Screen()));
                   })),
           Positioned(
-              top: 550,
+              top: 300,
               left: 165,
               child: ElevatedButton(
                   child: Text("Gen 3:"),
@@ -73,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             builder: (context) => const Gen3Screen()));
                   })),
           Positioned(
-              top: 600,
+              top: 350,
               left: 135,
               child: ElevatedButton(
                   child: Text("Habitat Confirm:"),
@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: TextStyle(
                   color: Colors.black.withOpacity(0.6),
                   fontWeight: FontWeight.bold,
-                  fontSize: 25,
+                  fontSize: 15,
                 ),
               )),
         ]));
