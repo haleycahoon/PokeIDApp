@@ -41,9 +41,9 @@ class _HomeScreenState extends State<HomeScreen> {
               )),
           Positioned(
               top: 200,
-              left: 165,
+              left: 135,
               child: ElevatedButton(
-                  child: const Text("Gen 1:"),
+                  child: const Text("Generation 1"),
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -52,9 +52,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   })),
           Positioned(
               top: 250,
-              left: 165,
+              left: 135,
               child: ElevatedButton(
-                  child: Text("Gen 2:"),
+                  child: Text("Generation 2:"),
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -63,9 +63,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   })),
           Positioned(
               top: 300,
-              left: 165,
+              left: 135,
               child: ElevatedButton(
-                  child: Text("Gen 3:"),
+                  child: Text("Generation 3:"),
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -74,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   })),
           Positioned(
               top: 350,
-              left: 135,
+              left: 125,
               child: ElevatedButton(
                   child: Text("Habitat Confirm:"),
                   onPressed: () {
