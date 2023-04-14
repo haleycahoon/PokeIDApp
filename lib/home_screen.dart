@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
             top: 40,
             left: 5,
             child: Image.asset(
-              'assets/images/pokeball.jpg',
+              'assets/images/icon.png',
               width: 70,
               fit: BoxFit.fitWidth,
             ),
