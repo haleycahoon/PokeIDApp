@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 // declare a widget w capcity for change
 
-Future<String> getValue() async {
+Future<dynamic> getValue() async {
   var url = Uri.https("pokeapi.co", '/api/v2/pokemon/eevee');
   http.Response response = await http.get(url);
 
@@ -12,10 +12,12 @@ Future<String> getValue() async {
     if (response.statusCode == 200) {
       String data = response.body;
       var decodedData = jsonDecode(data);
+
       String picUrl = decodedData['sprites']['versions']['generation-iii']
           ['emerald']['front_default'];
-      print(picUrl);
-      return picUrl;
+      String type = decodedData['types'][0]['type']['name'];
+
+      return [picUrl, type];
     } else {
       print('response.statusCode not 200. failed.');
       return 'failed';
@@ -34,12 +36,12 @@ class FutureBuilderDemo extends StatefulWidget {
 }
 
 class _FutureBuilderDemoState extends State<FutureBuilderDemo> {
-  Future<String>? _value;
+  Future? _value;
 
   @override
   initState() {
-    super.initState();
     _value = getValue();
+    super.initState();
   }
 
   @override
@@ -53,23 +55,21 @@ class _FutureBuilderDemoState extends State<FutureBuilderDemo> {
       body: SizedBox(
         width: double.infinity,
         child: Center(
-          child: FutureBuilder<String>(
+          child: FutureBuilder(
             future: _value,
             initialData: 'Demo Name',
             builder: (
               BuildContext context,
-              AsyncSnapshot<String> snapshot,
+              AsyncSnapshot<dynamic> snapshot,
             ) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CircularProgressIndicator(),
                     Visibility(
                       visible: snapshot.hasData,
                       child: Text(
-                        snapshot.data as String,
+                        snapshot.data[1] as String,
                         style:
                             const TextStyle(color: Colors.black, fontSize: 24),
                       ),
@@ -80,7 +80,12 @@ class _FutureBuilderDemoState extends State<FutureBuilderDemo> {
                 if (snapshot.hasError) {
                   return const Text('Error');
                 } else if (snapshot.hasData) {
-                  return Image.network(snapshot.data as String);
+                  return Column(
+                    children: [
+                      Image.network(snapshot.data[0] as String),
+                      Text((snapshot.data[1] as String))
+                    ],
+                  );
                 } else {
                   return const Text('Empty data');
                 }
