@@ -1,4 +1,5 @@
 // Name: habitat_confirm:
+// based on: https://www.youtube.com/watch?v=mMgr47QBZWA
 //
 // This screen is where: The user may choose a habitat they wish to "explore".
 //
@@ -68,15 +69,13 @@ class _HabitatConfirmState extends State<HabitatConfirm> {
   // checkbox is tapped
   void checkboxChecked(bool? value, int idx) {
     setState(() {
-      // the the box is "true"/ checked and it is tapped,
-      // toggle the box to "false"/ unchecked
-
-      print("before" + preMonNames[idx][0]);
-      preMonNames[idx][1] ? print("true") : print("false");
+      // toggle the check box from true<->false
       preMonNames[idx][1] = !preMonNames[idx][1];
-      print("after" + preMonNames[idx][0]);
-      preMonNames[idx][1] ? print("true") : print("false");
     });
+  }
+
+  String getPokeUrlEnd() {
+    return "/api/v2/pokemon/${widget}";
   }
 
   @override
@@ -87,22 +86,20 @@ class _HabitatConfirmState extends State<HabitatConfirm> {
       // appBar on the top of the screen "title bar"
       appBar: AppBar(
         title: Text('A HABITAT NAME Checklist'),
-        //elevation: 0
-        // the above line will make the appbar flat. do we want this? <=============================================
       ),
+
+      // loops through every pokemon in a list of pokemon
+      // and creates a checkbox for them
       body: ListView.builder(
         itemCount: preMonNames.length,
         itemBuilder: (context, i) {
           return ChecklistTile(
             pokeName: preMonNames[i][0],
             pokeSeen: preMonNames[i][1],
+            imgUrl: "/api/v2/pokemon/${widget.pokeName}",
             onChanged: (value) => checkboxChecked(value, i),
           );
-        }
-        // loops through every pokemon in a list of pokemon
-        // and creates a checkbox for them
-
-        ,
+        },
       ),
     );
   }

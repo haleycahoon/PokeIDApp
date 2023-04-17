@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:pokedextest/gen1_screen.dart';
 import 'package:pokedextest/gen2_screen.dart';
 import 'package:pokedextest/gen3_screen.dart';
+import 'package:pokedextest/future_test.dart';
 
 import 'package:pokedextest/habitat_confirm.dart';
 
@@ -81,7 +82,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const HabitatConfirm()));
+                            //builder: (context) => const HabitatConfirm()));
+                            builder: (context) => MyStatefulWidget()));
                   })),
           Positioned(
             top: 40,
