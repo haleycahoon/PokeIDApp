@@ -20,7 +20,7 @@ class _Gen3ScreenState extends State<Gen3Screen> {
         backgroundColor: Colors.red[50],
         // appBar on the top of the screen "title bar"
         appBar: AppBar(
-          title: Text('Gen 3 List of Pokemons'),
+          title: Text('Generation 3 Pokémon'),
           //elevation: 0
           // the above line will make the appbar flat. do we want this? <=============================================
         ));

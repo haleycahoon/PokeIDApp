@@ -37,14 +37,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: TextStyle(
                   color: Colors.black.withOpacity(0.6),
                   fontWeight: FontWeight.bold,
-                  fontSize: 40,
+                  fontSize: 20,
                 ),
               )),
           Positioned(
-              top: 450,
-              left: 165,
+              top: 200,
+              left: 135,
               child: ElevatedButton(
-                  child: const Text("Gen 1:"),
+                  child: const Text("Generation 1"),
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -52,10 +52,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             builder: (context) => const Gen1Screen()));
                   })),
           Positioned(
-              top: 500,
-              left: 165,
+              top: 250,
+              left: 135,
               child: ElevatedButton(
-                  child: Text("Gen 2:"),
+                  child: Text("Generation 2:"),
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -63,10 +63,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             builder: (context) => const Gen2Screen()));
                   })),
           Positioned(
-              top: 550,
-              left: 165,
+              top: 300,
+              left: 135,
               child: ElevatedButton(
-                  child: Text("Gen 3:"),
+                  child: Text("Generation 3:"),
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -74,8 +74,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             builder: (context) => const Gen3Screen()));
                   })),
           Positioned(
-              top: 600,
-              left: 135,
+              top: 350,
+              left: 125,
               child: ElevatedButton(
                   child: Text("Habitat Confirm:"),
                   onPressed: () {
@@ -89,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
             top: 40,
             left: 5,
             child: Image.asset(
-              'assets/images/pokeball.jpg',
+              'assets/images/icon.png',
               width: 70,
               fit: BoxFit.fitWidth,
             ),
@@ -102,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: TextStyle(
                   color: Colors.black.withOpacity(0.6),
                   fontWeight: FontWeight.bold,
-                  fontSize: 25,
+                  fontSize: 15,
                 ),
               )),
         ]));
