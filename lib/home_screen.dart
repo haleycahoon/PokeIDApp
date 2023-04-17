@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               )),
           Positioned(
-              top: 200,
+              top: 145,
               left: 135,
               child: ElevatedButton(
                   child: const Text("Generation 1"),
@@ -52,10 +52,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             builder: (context) => const Gen1Screen()));
                   })),
           Positioned(
-              top: 250,
+              top: 195,
               left: 135,
               child: ElevatedButton(
-                  child: Text("Generation 2:"),
+                  child: Text("Generation 2"),
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -63,10 +63,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             builder: (context) => const Gen2Screen()));
                   })),
           Positioned(
-              top: 300,
+              top: 245,
               left: 135,
               child: ElevatedButton(
-                  child: Text("Generation 3:"),
+                  child: Text("Generation 3"),
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -74,10 +74,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             builder: (context) => const Gen3Screen()));
                   })),
           Positioned(
-              top: 350,
+              top: 295,
               left: 125,
               child: ElevatedButton(
-                  child: Text("Habitat Confirm:"),
+                  child: Text("Habitat Confirm"),
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -95,14 +95,14 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Positioned(
-              top: 390,
-              left: 5,
+              top: 120,
+              left: 40,
               child: Text(
                 'What Pokemon are you looking for?',
                 style: TextStyle(
                   color: Colors.black.withOpacity(0.6),
                   fontWeight: FontWeight.bold,
-                  fontSize: 15,
+                  fontSize: 20,
                 ),
               )),
         ]));
