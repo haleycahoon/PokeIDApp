@@ -96,7 +96,6 @@ class _HabitatConfirmState extends State<HabitatConfirm> {
           return ChecklistTile(
             pokeName: preMonNames[i][0],
             pokeSeen: preMonNames[i][1],
-            imgUrl: "/api/v2/pokemon/${widget.pokeName}",
             onChanged: (value) => checkboxChecked(value, i),
           );
         },

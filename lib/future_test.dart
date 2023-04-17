@@ -69,7 +69,7 @@ class _FutureBuilderDemoState extends State<FutureBuilderDemo> {
                     Visibility(
                       visible: snapshot.hasData,
                       child: Text(
-                        snapshot.data,
+                        snapshot.data as String,
                         style:
                             const TextStyle(color: Colors.black, fontSize: 24),
                       ),
@@ -80,8 +80,7 @@ class _FutureBuilderDemoState extends State<FutureBuilderDemo> {
                 if (snapshot.hasError) {
                   return const Text('Error');
                 } else if (snapshot.hasData) {
-                  return Text(snapshot.data,
-                      style: const TextStyle(color: Colors.cyan, fontSize: 36));
+                  return Image.network(snapshot.data as String);
                 } else {
                   return const Text('Empty data');
                 }
