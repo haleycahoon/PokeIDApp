@@ -27,7 +27,7 @@ class _Gen1ScreenState extends State<Gen1Screen> {
         body: GridView.count(
           // Create a grid with 2 columns. If you change the scrollDirection to
           // horizontal, this produces 2 rows.
-          crossAxisCount: 4,
+          crossAxisCount: 3,
           // Generate 100 widgets that display their index in the List.
           children: List.generate(151, (index) {
             // CHANGE THIS NUMBER TO VARIABLE THAT HOLDS HOW MANY POKEMON IN LIST
