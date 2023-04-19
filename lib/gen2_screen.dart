@@ -15,14 +15,31 @@ class _Gen2ScreenState extends State<Gen2Screen> {
   // checkbox is tapped
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        // define the BG color of the whole page
-        backgroundColor: Colors.red[50],
-        // appBar on the top of the screen "title bar"
+    const title = 'Generation 2';
+
+    return MaterialApp(
+      title: title,
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
         appBar: AppBar(
-          title: Text('Generation 2 Pokémon'),
-          //elevation: 0
-          // the above line will make the appbar flat. do we want this? <=============================================
-        ));
+          title: const Text(title),
+        ),
+        body: GridView.count(
+          // Create a grid with 2 columns. If you change the scrollDirection to
+          // horizontal, this produces 2 rows.
+          crossAxisCount: 4,
+          // Generate 100 widgets that display their index in the List.
+          children: List.generate(100, (index) {
+            // CHANGE THIS NUMBER TO VARIABLE THAT HOLDS HOW MANY POKEMON IN LIST
+            return Center(
+              child: Text(
+                'Item $index',
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+            );
+          }),
+        ),
+      ),
+    );
   }
 }
