@@ -22,6 +22,9 @@ class _Gen2ScreenState extends State<Gen2Screen> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
+          leading: BackButton(
+            onPressed: () => Navigator.of(context).pop(),
+          ),
           title: const Text(title),
         ),
         body: GridView.count(
