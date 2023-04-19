@@ -88,9 +88,8 @@ class _HabitatConfirmState extends State<HabitatConfirm> {
         leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: Text('A HABITAT NAME Checklist'),
+        title: const Text('A HABITAT NAME Checklist'),
       ),
-
       // loops through every pokemon in a list of pokemon
       // and creates a checkbox for them
       body: ListView.builder(
