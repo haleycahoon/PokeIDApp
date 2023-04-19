@@ -85,6 +85,9 @@ class _HabitatConfirmState extends State<HabitatConfirm> {
       backgroundColor: Colors.red[50],
       // appBar on the top of the screen "title bar"
       appBar: AppBar(
+        leading: BackButton(
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         title: Text('A HABITAT NAME Checklist'),
       ),
 
