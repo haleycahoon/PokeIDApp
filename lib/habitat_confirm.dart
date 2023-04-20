@@ -84,9 +84,11 @@ class _HabitatConfirmState extends State<HabitatConfirm> {
       backgroundColor: Colors.red[50],
       // appBar on the top of the screen "title bar"
       appBar: AppBar(
-        title: Text('A HABITAT NAME Checklist'),
+        leading: BackButton(
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: const Text('A HABITAT NAME Checklist'),
       ),
-
       // loops through every pokemon in a list of pokemon
       // and creates a checkbox for them
       body: ListView.builder(
