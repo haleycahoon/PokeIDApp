@@ -15,11 +15,10 @@ import 'package:pokedextest/util/checklist_tile.dart';
 
 // Pretend array to display da pokemon with TESTING ONLY
 List preMonNames = [
-  ["Eevee", false],
-  ["Gastly", false],
-  ["Meowth", false],
-  ["Gibble", false],
-  ["Darkrai", false]
+  ["eevee", false],
+  ["gastly", false],
+  ["meowth", false],
+  ["darkrai", false]
 ];
 
 /////////////

@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         context,
                         MaterialPageRoute(
                             //builder: (context) => const HabitatConfirm()));
-                            builder: (context) => FutureBuilderDemo()));
+                            builder: (context) => HabitatConfirm()));
                   })),
           Positioned(
             top: 40,

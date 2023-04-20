@@ -4,8 +4,9 @@ import 'package:http/http.dart' as http;
 
 // declare a widget w capcity for change
 
-Future<dynamic> getValue() async {
-  var url = Uri.https("pokeapi.co", '/api/v2/pokemon/eevee');
+Future<dynamic> getValue(String pokename) async {
+  var urlEnd = '/api/v2/pokemon/' + pokename;
+  var url = Uri.https("pokeapi.co", urlEnd);
   http.Response response = await http.get(url);
 
   try {
@@ -40,7 +41,7 @@ class _FutureBuilderDemoState extends State<FutureBuilderDemo> {
 
   @override
   initState() {
-    _value = getValue();
+    //_value = getValue(pokename);
     super.initState();
   }
 
