@@ -100,8 +100,8 @@ class PokemonsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        mainAxisSpacing: 20,
-        crossAxisSpacing: 20,
+        mainAxisSpacing: 10,
+        crossAxisSpacing: 5,
         crossAxisCount: 2,
       ),
       itemCount: pokemons.length,
@@ -110,7 +110,7 @@ class PokemonsList extends StatelessWidget {
             resizeToAvoidBottomInset: false,
             body: Column(
               children: [
-                Image.network(pokemons[index].imageurl),
+                Expanded(child: Image.network(pokemons[index].imageurl)),
                 ElevatedButton(
                     onPressed: () {
                       Navigator.push(
