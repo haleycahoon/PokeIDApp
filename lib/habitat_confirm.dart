@@ -11,14 +11,30 @@
 // The user may press a "home button" to return to the main menu
 
 import 'package:flutter/material.dart';
+import 'package:pokedextest/util/checklist.dart';
 import 'package:pokedextest/util/checklist_tile.dart';
 
 // Pretend array to display da pokemon with TESTING ONLY
-List preMonNames = [
+List habitatList = [
   ["eevee", false],
   ["gastly", false],
   ["meowth", false],
   ["darkrai", false]
+];
+
+List cave = [
+  ["zubat", false],
+  ["diglett", false]
+];
+
+List forest = [
+  ["caterpie", false],
+  ["weedle", false]
+];
+
+List grassland = [
+  ["bulbasaur", false],
+  ["rattata", false]
 ];
 
 /////////////
@@ -39,7 +55,7 @@ List preMonNames = [
 /// /////////////////
 ///
 ///
-/// Name:
+/// Name: summon list of pokemon
 ///
 ///
 ///
@@ -55,52 +71,108 @@ List preMonNames = [
 ///
 ///
 ///\
+const double insets = 8;
+const double sizeW = 50;
+const double sizeL = 100;
+const double fontS = 20;
 
 class HabitatConfirm extends StatefulWidget {
-  const HabitatConfirm({super.key});
-
   @override
-  State<HabitatConfirm> createState() => _HabitatConfirmState();
+  _HabitatConfirmState createState() => _HabitatConfirmState();
 }
 
 class _HabitatConfirmState extends State<HabitatConfirm> {
-  //idx for listing each pokemon
-  // checkbox is tapped
-  void checkboxChecked(bool? value, int idx) {
-    setState(() {
-      // toggle the check box from true<->false
-      preMonNames[idx][1] = !preMonNames[idx][1];
-    });
-  }
-
-  String getPokeUrlEnd() {
-    return "/api/v2/pokemon/${widget}";
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // define the BG color of the whole page
-      backgroundColor: Colors.red[50],
-      // appBar on the top of the screen "title bar"
-      appBar: AppBar(
-        leading: BackButton(
-          onPressed: () => Navigator.of(context).pop(),
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/habitatconfirmbg.jpg"),
+          fit: BoxFit.cover,
         ),
-        title: const Text('A HABITAT NAME Checklist'),
       ),
-      // loops through every pokemon in a list of pokemon
-      // and creates a checkbox for them
-      body: ListView.builder(
-        itemCount: preMonNames.length,
-        itemBuilder: (context, i) {
-          return ChecklistTile(
-            pokeName: preMonNames[i][0],
-            pokeSeen: preMonNames[i][1],
-            onChanged: (value) => checkboxChecked(value, i),
-          );
-        },
-      ),
+      child: Scaffold(
+          // appBar on the top of the screen "title bar"
+          appBar: AppBar(
+            title: Text('Habitat Confirm'),
+          ),
+          backgroundColor: Color.fromARGB(0, 255, 255, 255),
+          body: Column(children: [
+            Padding(
+                padding: const EdgeInsets.all(25),
+                child: Text(
+                  'What habitat are you exploring?',
+                  style: TextStyle(
+                      color: Colors.black.withOpacity(0.6),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      backgroundColor: Color.fromARGB(187, 255, 255, 255)),
+                )),
+            Padding(
+                padding: const EdgeInsets.all(insets),
+                child: ElevatedButton(
+                    child: const Text(
+                      "Cave",
+                      style: TextStyle(fontSize: fontS),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HabitatCheck(
+                                  habitatList: cave, habitatName: "Cave")));
+                    })),
+            Padding(
+                padding: const EdgeInsets.all(insets),
+                child: ElevatedButton(
+                    child: Text(
+                      "Forest",
+                      style: TextStyle(fontSize: fontS),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HabitatCheck(
+                                  habitatList: forest, habitatName: "Forest")));
+                    })),
+            Padding(
+                padding: const EdgeInsets.all(insets),
+                child: ElevatedButton(
+                    child: Text(
+                      "Grassland",
+                      style: TextStyle(fontSize: fontS),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HabitatCheck(
+                                  habitatList: grassland,
+                                  habitatName: "Grassland")));
+                    })),
+            Padding(
+                padding: const EdgeInsets.all(insets),
+                child: ElevatedButton(
+                    child: Text(
+                      "Trial",
+                      style: TextStyle(fontSize: fontS),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              //builder: (context) => const HabitatConfirm()));
+                              builder: (context) => HabitatCheck(habitatList: [
+                                    ["eevee", false],
+                                    ["gastly", false],
+                                    ["meowth", false],
+                                    ["darkrai", false]
+                                  ], habitatName: "Test")));
+                    })),
+          ])),
     );
   }
 }

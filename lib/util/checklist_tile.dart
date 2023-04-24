@@ -94,7 +94,7 @@ class _ChecklistTileState extends State<ChecklistTile> {
               } else if (snapshot.connectionState == ConnectionState.done) {
                 if (snapshot.hasError) {
                   return const Text('Error');
-                } else if (snapshot.hasData) {
+                } else if (snapshot.hasData && widget.pokeSeen == false) {
                   return Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
@@ -106,6 +106,31 @@ class _ChecklistTileState extends State<ChecklistTile> {
                             onChanged: widget.onChanged),
                         // a picture of the target pokemon
                         Image.network(snapshot.data[0] as String),
+                        // the name that appears inside of the box
+                        // have this be a variable pokemon name
+                        // given to the widget by an array
+                        Text(
+                          widget.pokeName,
+                          style: TextStyle(fontSize: 30),
+                        ),
+                      ]));
+                } else if (snapshot.hasData && widget.pokeSeen == true) {
+                  return Container(
+                      padding: const EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                          color: Color.fromARGB(109, 136, 1, 1),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Row(children: [
+                        Checkbox(
+                            value: widget.pokeSeen,
+                            onChanged: widget.onChanged),
+                        // a picture of the target pokemon
+                        Image.network(snapshot.data[0] as String,
+                            //////////////////ONLY DIFFERENCE FROM ABOVE "ELSE IF"//////////////////
+                            ///greys out the pokemon image
+                            color: Color.fromRGBO(255, 255, 255, 0.50),
+                            colorBlendMode: BlendMode.modulate),
+
                         // the name that appears inside of the box
                         // have this be a variable pokemon name
                         // given to the widget by an array
