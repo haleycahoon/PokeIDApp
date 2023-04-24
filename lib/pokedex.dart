@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:pokedextest/home_screen.dart';
 
 Future<List<Pokemon>> fetchPhotos(http.Client client) async {
   final response = await client.get(Uri.parse(
@@ -54,16 +55,21 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
   final String title;
 
   @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(widget.title),
       ),
       body: FutureBuilder<List<Pokemon>>(
         future: fetchPhotos(http.Client()),
@@ -94,11 +100,27 @@ class PokemonsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        mainAxisSpacing: 20,
+        crossAxisSpacing: 20,
         crossAxisCount: 2,
       ),
       itemCount: pokemons.length,
       itemBuilder: (context, index) {
-        return Image.network(pokemons[index].imageurl);
+        return Scaffold(
+            resizeToAvoidBottomInset: false,
+            body: Column(
+              children: [
+                Image.network(pokemons[index].imageurl),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HomeScreen()));
+                    },
+                    child: Text(pokemons[index].name))
+              ],
+            ));
       },
     );
   }

@@ -15,7 +15,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  var PokeAPI = "https://pokeapi.co/api/v2/pokemon/ditto";
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
