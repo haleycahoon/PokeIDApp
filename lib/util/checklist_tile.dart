@@ -29,7 +29,6 @@ Future<dynamic> getValue(String pokename) async {
   } catch (e) {
     // if any error occurs, the error will be printed in the debug console
     print(e);
-    print('error when trying to get response. failed.');
     return ['failed'];
   }
 }
@@ -38,6 +37,7 @@ Future<dynamic> getValue(String pokename) async {
 // Class: ChecklistTile
 // This class will create a stateful widget
 // That contains an image and a name
+// when the user presses a check box, the image of the pokemon will gray out signifying they have been seen
 //////////////////////////////////////////////////////////////////////
 class ChecklistTile extends StatefulWidget {
   // pokemon name is given
@@ -85,10 +85,10 @@ class _ChecklistTileState extends State<ChecklistTile> {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Column(
                   children: [
-                    CircularProgressIndicator(),
+                    const CircularProgressIndicator(),
                     Visibility(
                         visible: snapshot.hasData,
-                        child: Text("Loading checklist"))
+                        child: const Text("Loading checklist"))
                   ],
                 );
               } else if (snapshot.connectionState == ConnectionState.done) {
@@ -98,7 +98,7 @@ class _ChecklistTileState extends State<ChecklistTile> {
                   return Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                          color: Color.fromARGB(109, 136, 1, 1),
+                          color: const Color.fromARGB(109, 136, 1, 1),
                           borderRadius: BorderRadius.circular(10)),
                       child: Row(children: [
                         Checkbox(
@@ -111,14 +111,14 @@ class _ChecklistTileState extends State<ChecklistTile> {
                         // given to the widget by an array
                         Text(
                           widget.pokeName,
-                          style: TextStyle(fontSize: 30),
+                          style: const TextStyle(fontSize: 30),
                         ),
                       ]));
                 } else if (snapshot.hasData && widget.pokeSeen == true) {
                   return Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                          color: Color.fromARGB(109, 136, 1, 1),
+                          color: const Color.fromARGB(109, 136, 1, 1),
                           borderRadius: BorderRadius.circular(10)),
                       child: Row(children: [
                         Checkbox(
@@ -128,7 +128,7 @@ class _ChecklistTileState extends State<ChecklistTile> {
                         Image.network(snapshot.data[0] as String,
                             //////////////////ONLY DIFFERENCE FROM ABOVE "ELSE IF"//////////////////
                             ///greys out the pokemon image
-                            color: Color.fromRGBO(255, 255, 255, 0.50),
+                            color: const Color.fromRGBO(255, 255, 255, 0.50),
                             colorBlendMode: BlendMode.modulate),
 
                         // the name that appears inside of the box
@@ -136,7 +136,7 @@ class _ChecklistTileState extends State<ChecklistTile> {
                         // given to the widget by an array
                         Text(
                           widget.pokeName,
-                          style: TextStyle(fontSize: 30),
+                          style: const TextStyle(fontSize: 30),
                         ),
                       ]));
                 } else {
