@@ -1,48 +1,135 @@
-// this file is to display all the pokemon for generation 2
+import 'dart:convert';
+import 'dart:async';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:pokedextest/habitat_confirm.dart';
-import 'home_screen.dart';
+import 'package:http/http.dart' as http;
+import 'package:pokedextest/home_screen.dart';
 
-class Gen2Screen extends StatefulWidget {
-  const Gen2Screen({super.key});
+Future<List<Pokemon>> fetchPhotos(http.Client client) async {
+  final response = await client.get(Uri.parse(
+      'https://raw.githubusercontent.com/hungps/flutter_pokedex/master/assets/pokemons.json'));
 
-  @override
-  State<Gen2Screen> createState() => _Gen2ScreenState();
+  // Use the compute function to run parsePhotos in a separate isolate.
+  return compute(parsePhotos, response.body);
 }
 
-class _Gen2ScreenState extends State<Gen2Screen> {
-  //idx for listing each pokemon
-  // checkbox is tapped
+// A function that converts a response body into a List<Photo>.
+List<Pokemon> parsePhotos(String responseBody) {
+  final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
+  return parsed.map<Pokemon>((json) => Pokemon.fromJson(json)).toList();
+}
+
+class Pokemon {
+  final String name;
+  final String id;
+  final String imageurl;
+
+  const Pokemon({
+    required this.name,
+    required this.id,
+    required this.imageurl,
+  });
+
+  factory Pokemon.fromJson(Map<String, dynamic> json) {
+    return Pokemon(
+        name: json['name'] as String,
+        id: json['id'] as String,
+        imageurl: json["imageurl"] as String);
+  }
+}
+/*
+class Gen1Dex extends StatelessWidget {
+  const Gen1Dex({super.key});
+
   @override
   Widget build(BuildContext context) {
-    const title = 'Generation 2';
+    const appTitle = 'Generation 1: Kanto Region';
 
-    return MaterialApp(
-      title: title,
+    return const MaterialApp(
+      title: appTitle,
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          leading: BackButton(
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-          title: const Text(title),
-        ),
-        body: GridView.count(
-          // Create a grid with 2 columns. If you change the scrollDirection to
-          // horizontal, this produces 2 rows.
-          crossAxisCount: 3,
-          // Generate 100 widgets that display their index in the List.
-          children: List.generate(100, (index) {
-            // CHANGE THIS NUMBER TO VARIABLE THAT HOLDS HOW MANY POKEMON IN LIST
-            return Center(
-              child: Text(
-                'Item $index',
-                style: Theme.of(context).textTheme.headlineSmall,
-              ),
-            );
-          }),
+      home: Gen1Dex(title: appTitle),
+    );
+  }
+}*/
+
+class Gen2Dex extends StatefulWidget {
+  const Gen2Dex({super.key, required this.title});
+
+  final String title;
+
+  @override
+  State<Gen2Dex> createState() => _Gen2DexState();
+}
+
+class _Gen2DexState extends State<Gen2Dex> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+        leading: BackButton(
+          onPressed: () => Navigator.of(context).pop(),
         ),
       ),
+      body: FutureBuilder<List<Pokemon>>(
+        future: fetchPhotos(http.Client()),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return const Center(
+              child: Text('An error has occurred!'),
+            );
+          } else if (snapshot.hasData) {
+            return PokemonsList(pokemons: snapshot.data!);
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
+      ),
+    );
+  }
+}
+
+class PokemonsList extends StatelessWidget {
+  const PokemonsList({super.key, required this.pokemons});
+
+  final List<Pokemon> pokemons;
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        mainAxisSpacing: 10,
+        crossAxisSpacing: 2,
+        crossAxisCount: 2,
+      ),
+      itemCount: 100,
+      itemBuilder: (context, index) {
+        {
+          index = index + 151;
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Scaffold(
+                resizeToAvoidBottomInset: false,
+                body: Column(
+                  children: [
+                    Expanded(child: Image.network(pokemons[index].imageurl)),
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomeScreen()));
+                        },
+                        child: Text(pokemons[index].name))
+                  ],
+                )),
+          );
+        }
+      },
     );
   }
 }

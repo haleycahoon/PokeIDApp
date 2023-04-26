@@ -38,38 +38,40 @@ class Pokemon {
         imageurl: json["imageurl"] as String);
   }
 }
-
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+/*
+class Gen1Dex extends StatelessWidget {
+  const Gen1Dex({super.key});
 
   @override
   Widget build(BuildContext context) {
-    const appTitle = 'Isolate Demo';
+    const appTitle = 'Generation 1: Kanto Region';
 
     return const MaterialApp(
       title: appTitle,
-      home: MyHomePage(title: appTitle),
+      debugShowCheckedModeBanner: false,
+      home: Gen1Dex(title: appTitle),
     );
   }
-}
+}*/
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class Gen1Dex extends StatefulWidget {
+  const Gen1Dex({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<Gen1Dex> createState() => _Gen1DexState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _Gen1DexState extends State<Gen1Dex> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        leading: BackButton(
+          onPressed: () => Navigator.of(context).pop(),
+        ),
       ),
       body: FutureBuilder<List<Pokemon>>(
         future: fetchPhotos(http.Client()),
@@ -101,26 +103,31 @@ class PokemonsList extends StatelessWidget {
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         mainAxisSpacing: 10,
-        crossAxisSpacing: 5,
+        crossAxisSpacing: 2,
         crossAxisCount: 2,
       ),
-      itemCount: pokemons.length,
+      itemCount: 151,
       itemBuilder: (context, index) {
-        return Scaffold(
-            resizeToAvoidBottomInset: false,
-            body: Column(
-              children: [
-                Expanded(child: Image.network(pokemons[index].imageurl)),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => HomeScreen()));
-                    },
-                    child: Text(pokemons[index].name))
-              ],
-            ));
+        if (index <= 150) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Scaffold(
+                resizeToAvoidBottomInset: false,
+                body: Column(
+                  children: [
+                    Expanded(child: Image.network(pokemons[index].imageurl)),
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomeScreen()));
+                        },
+                        child: Text(pokemons[index].name))
+                  ],
+                )),
+          );
+        }
       },
     );
   }

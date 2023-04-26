@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:pokedextest/gen1_screen.dart';
 import 'package:pokedextest/gen2_screen.dart';
 import 'package:pokedextest/gen3_screen.dart';
+import 'package:pokedextest/pokedex.dart';
 import 'package:pokedextest/util/checklist.dart';
 
 import 'package:pokedextest/habitat_confirm.dart';
@@ -48,7 +49,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const Gen1Screen()));
+                            builder: (context) => const Gen1Dex(
+                                  title: 'Generation 1: Kanto Region',
+                                )));
                   })),
           Positioned(
               top: 195,
@@ -59,7 +62,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const Gen2Screen()));
+                            builder: (context) => const Gen2Dex(
+                                title: 'Generation 2: Jhoto Region')));
                   })),
           Positioned(
               top: 245,
