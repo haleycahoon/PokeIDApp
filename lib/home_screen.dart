@@ -74,7 +74,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const Gen3Screen()));
+                            builder: (context) =>
+                                const Gen3Dex(title: 'Generation 3: Idk yet')));
                   })),
           Positioned(
               top: 295,
