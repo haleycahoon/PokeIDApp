@@ -38,21 +38,6 @@ class Pokemon {
         imageurl: json["imageurl"] as String);
   }
 }
-/*
-class Gen1Dex extends StatelessWidget {
-  const Gen1Dex({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    const appTitle = 'Generation 1: Kanto Region';
-
-    return const MaterialApp(
-      title: appTitle,
-      debugShowCheckedModeBanner: false,
-      home: Gen1Dex(title: appTitle),
-    );
-  }
-}*/
 
 class Gen1Dex extends StatefulWidget {
   const Gen1Dex({super.key, required this.title});

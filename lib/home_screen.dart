@@ -2,10 +2,9 @@ import 'dart:convert';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:pokedextest/gen1_screen.dart';
 import 'package:pokedextest/gen2_screen.dart';
 import 'package:pokedextest/gen3_screen.dart';
-import 'package:pokedextest/pokedex.dart';
+import 'package:pokedextest/pokeclassAndGenScreen.dart';
 import 'package:pokedextest/util/checklist.dart';
 
 import 'package:pokedextest/habitat_confirm.dart';
