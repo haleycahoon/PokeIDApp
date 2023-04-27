@@ -1,16 +1,13 @@
 import 'gen1_screen.dart';
-import 'dart:convert';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:pokedextest/gen2_screen.dart';
+import 'package:pokedextest/pokedex.dart';
 import 'package:pokedextest/gen3_screen.dart';
-
-import 'package:pokedextest/util/checklist.dart';
-
 import 'package:pokedextest/habitat_confirm.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -49,7 +46,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const Gen1Dex(
+                            builder: (context) => const Dex(
+                                  startingIdx: 0,
+                                  endingIdx: 151,
                                   title: 'Generation 1: Kanto Region',
                                 )));
                   })),
@@ -57,31 +56,35 @@ class _HomeScreenState extends State<HomeScreen> {
               top: 195,
               left: 145,
               child: ElevatedButton(
-                  child: Text("Generation 2"),
+                  child: const Text("Generation 2"),
                   onPressed: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const Gen2Dex(
-                                title: 'Generation 2: Jhoto Region')));
+                            builder: (context) => const Dex(
+                                startingIdx: 151,
+                                endingIdx: 251,
+                                title: 'Generation 2: Johto Region')));
                   })),
           Positioned(
               top: 245,
               left: 145,
               child: ElevatedButton(
-                  child: Text("Generation 3"),
+                  child: const Text("Generation 3"),
                   onPressed: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                const Gen3Dex(title: 'Generation 3: Idk yet')));
+                            builder: (context) => const Dex(
+                                startingIdx: 251,
+                                endingIdx: 386,
+                                title: 'Generation 3: Hoenn')));
                   })),
           Positioned(
               top: 295,
               left: 135,
               child: ElevatedButton(
-                  child: Text("Habitat Confirm"),
+                  child: const Text("Habitat Confirm"),
                   onPressed: () {
                     Navigator.push(
                         context,

@@ -111,6 +111,13 @@ Widget statBox(String statName, int stat) {
   );
 }
 
+Widget spacer() {
+  return const SizedBox(
+    width: 5,
+    height: 5,
+  );
+}
+
 Widget pokeStats(int hp, int attack, int defense, int special_attack,
     int special_defense, int speed, int total) {
   return Column(
@@ -122,42 +129,17 @@ Widget pokeStats(int hp, int attack, int defense, int special_attack,
             fontWeight: FontWeight.bold,
             fontSize: 25,
           )),
-
-      const SizedBox(
-        width: 5,
-        height: 5,
-      ), // blank spacer->
-
+      spacer(),
       statBox("HP", hp),
-      const SizedBox(
-        width: 10,
-        height: 10,
-      ),
+      spacer(),
       statBox("Attack", attack),
-      const SizedBox(
-        width: 10,
-        height: 10,
-      ),
-      statBox("Defense", defense),
-      const SizedBox(
-        width: 10,
-        height: 10,
-      ),
+      spacer(),
       statBox("Sp. Atk", special_attack),
-      const SizedBox(
-        width: 10,
-        height: 10,
-      ),
+      spacer(),
       statBox("Sp. Def", special_defense),
-      const SizedBox(
-        width: 10,
-        height: 10,
-      ),
+      spacer(),
       statBox("Speed", speed),
-      const SizedBox(
-        width: 10,
-        height: 10,
-      ),
+      spacer(),
       statBox("Total", total),
     ],
   );

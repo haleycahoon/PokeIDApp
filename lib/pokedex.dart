@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:async';
 import 'util/pokeclass.dart';
+import 'util/individualdetail_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -20,16 +21,22 @@ List<Pokemon> parsePhotos(String responseBody) {
   return parsed.map<Pokemon>((json) => Pokemon.fromJson(json)).toList();
 }
 
-class Gen3Dex extends StatefulWidget {
-  const Gen3Dex({super.key, required this.title});
+class Gen2Dex extends StatefulWidget {
+  const Gen2Dex(
+      {super.key,
+      required this.title,
+      required this.startingIdx,
+      required this.endingIdx});
+  final int startingIdx;
+  final int endingIdx;
 
   final String title;
 
   @override
-  State<Gen3Dex> createState() => _Gen3DexState();
+  State<Gen2Dex> createState() => _Gen2DexState();
 }
 
-class _Gen3DexState extends State<Gen3Dex> {
+class _Gen2DexState extends State<Gen2Dex> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +54,11 @@ class _Gen3DexState extends State<Gen3Dex> {
               child: Text('An error has occurred!'),
             );
           } else if (snapshot.hasData) {
-            return PokemonsList(pokemons: snapshot.data!);
+            return PokemonsList(
+              pokemons: snapshot.data!,
+              startingIdx: widget.startingIdx,
+              endingIdx: widget.endingIdx,
+            );
           } else {
             return const Center(
               child: CircularProgressIndicator(),
@@ -60,8 +71,14 @@ class _Gen3DexState extends State<Gen3Dex> {
 }
 
 class PokemonsList extends StatelessWidget {
-  const PokemonsList({super.key, required this.pokemons});
+  const PokemonsList(
+      {super.key,
+      required this.pokemons,
+      required this.startingIdx,
+      required this.endingIdx});
 
+  final int startingIdx;
+  final int endingIdx;
   final List<Pokemon> pokemons;
 
   @override
@@ -72,10 +89,10 @@ class PokemonsList extends StatelessWidget {
         crossAxisSpacing: 2,
         crossAxisCount: 2,
       ),
-      itemCount: 100,
+      itemCount: endingIdx - startingIdx,
       itemBuilder: (context, index) {
         {
-          index = index + 251;
+          index = index + startingIdx;
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Scaffold(
@@ -88,7 +105,9 @@ class PokemonsList extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => HomeScreen()));
+                                  builder: (context) => DetailScreen(
+                                        poke: pokemons[index],
+                                      )));
                         },
                         child: Text(pokemons[index].name))
                   ],
