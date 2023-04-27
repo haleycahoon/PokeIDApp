@@ -89,7 +89,9 @@ class PokemonsList extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => DetailScreen()));
+                                  builder: (context) => DetailScreen(
+                                        poke: pokemons[index],
+                                      )));
                         },
                         child: Text(pokemons[index].name))
                   ],

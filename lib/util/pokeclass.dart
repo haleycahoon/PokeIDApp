@@ -1,20 +1,34 @@
+import 'package:pokedextest/habitat_confirm.dart';
+
 class Pokemon {
   final String name;
   final String id;
   final String imageurl;
   final String xdescription;
+  final int hp;
   final int attack;
   final int defense;
   final int special_attack;
   final int special_defense;
   final int speed;
   final int total;
+  final List<dynamic> typeofpokemon;
+
+  String getName() {
+    return name;
+  }
+
+  String getId() {
+    return id;
+  }
 
   const Pokemon({
     required this.name,
     required this.id,
     required this.imageurl,
+    required this.typeofpokemon,
     required this.xdescription,
+    required this.hp,
     required this.attack,
     required this.defense,
     required this.special_attack,
@@ -28,7 +42,9 @@ class Pokemon {
       name: json['name'] as String,
       id: json['id'] as String,
       imageurl: json["imageurl"] as String,
+      typeofpokemon: json['typeofpokemon'] as List<dynamic>,
       xdescription: json['xdescription'],
+      hp: json['hp'],
       attack: json['attack'],
       defense: json['defense'],
       special_attack: json['special_attack'],
