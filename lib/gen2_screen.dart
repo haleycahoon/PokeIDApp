@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:pokedextest/home_screen.dart';
+import 'package:pokedextest/util/individualdetail_screen.dart';
 
 Future<List<Pokemon>> fetchPhotos(http.Client client) async {
   final response = await client.get(Uri.parse(
@@ -122,7 +123,7 @@ class PokemonsList extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => HomeScreen()));
+                                  builder: (context) => DetailScreen()));
                         },
                         child: Text(pokemons[index].name))
                   ],

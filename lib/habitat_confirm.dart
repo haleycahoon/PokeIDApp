@@ -14,14 +14,6 @@ import 'package:flutter/material.dart';
 import 'package:pokedextest/util/checklist.dart';
 import 'package:pokedextest/util/checklist_tile.dart';
 
-// Pretend array to display da pokemon with TESTING ONLY
-List habitatList = [
-  ["eevee", false],
-  ["gastly", false],
-  ["meowth", false],
-  ["darkrai", false]
-];
-
 List cave = [
   ["zubat", false],
   ["golbat", false],
@@ -412,15 +404,14 @@ List waters_edge = [
 /////////////
 /// List of habitats
 /////////////
-/// 1: Cave[29]
-/// 2: Forest[71]
-/// 3: Grassland[80]
+/// 1: Cave
+/// 2: Forest
+/// 3: Grassland
 /// 4: Mountain
-/// 5. Rare (legendaries)
-/// 6. Rough-Terrain
-/// 7. Sea
-/// 8. Urban
-/// 9. Water's-Edge
+/// 5. Rough-Terrain
+/// 6. Sea
+/// 7. Urban
+/// 8. Water's-Edge
 ///
 /// //////////////////
 /// Functions
@@ -456,10 +447,8 @@ class HabitatConfirm extends StatefulWidget {
 class _HabitatConfirmState extends State<HabitatConfirm> {
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage("assets/images/habitatconfirmbg.jpg"),
           fit: BoxFit.cover,
@@ -468,9 +457,9 @@ class _HabitatConfirmState extends State<HabitatConfirm> {
       child: Scaffold(
           // appBar on the top of the screen "title bar"
           appBar: AppBar(
-            title: Text('Habitat Confirm'),
+            title: const Text('Habitat Confirm'),
           ),
-          backgroundColor: Color.fromARGB(0, 255, 255, 255),
+          backgroundColor: const Color.fromARGB(0, 255, 255, 255),
           body: Column(children: [
             Padding(
                 padding: const EdgeInsets.all(25),
@@ -480,7 +469,8 @@ class _HabitatConfirmState extends State<HabitatConfirm> {
                       color: Colors.black.withOpacity(0.6),
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
-                      backgroundColor: Color.fromARGB(187, 255, 255, 255)),
+                      backgroundColor:
+                          const Color.fromARGB(187, 255, 255, 255)),
                 )),
             Padding(
                 padding: const EdgeInsets.all(insets),
@@ -499,7 +489,7 @@ class _HabitatConfirmState extends State<HabitatConfirm> {
             Padding(
                 padding: const EdgeInsets.all(insets),
                 child: ElevatedButton(
-                    child: Text(
+                    child: const Text(
                       "Forest",
                       style: TextStyle(fontSize: fontS),
                     ),
@@ -513,7 +503,7 @@ class _HabitatConfirmState extends State<HabitatConfirm> {
             Padding(
                 padding: const EdgeInsets.all(insets),
                 child: ElevatedButton(
-                    child: Text(
+                    child: const Text(
                       "Grassland",
                       style: TextStyle(fontSize: fontS),
                     ),
@@ -528,8 +518,8 @@ class _HabitatConfirmState extends State<HabitatConfirm> {
             Padding(
                 padding: const EdgeInsets.all(insets),
                 child: ElevatedButton(
-                    child: Text(
-                      "Trial",
+                    child: const Text(
+                      "Mountain",
                       style: TextStyle(fontSize: fontS),
                     ),
                     onPressed: () {
@@ -537,12 +527,68 @@ class _HabitatConfirmState extends State<HabitatConfirm> {
                           context,
                           MaterialPageRoute(
                               //builder: (context) => const HabitatConfirm()));
-                              builder: (context) => HabitatCheck(habitatList: [
-                                    ["eevee", false],
-                                    ["gastly", false],
-                                    ["meowth", false],
-                                    ["darkrai", false]
-                                  ], habitatName: "Test")));
+                              builder: (context) => HabitatCheck(
+                                    habitatList: mountain,
+                                    habitatName: "Mountain",
+                                  )));
+                    })),
+            Padding(
+                padding: const EdgeInsets.all(insets),
+                child: ElevatedButton(
+                    child: const Text(
+                      "Rough-Terrain",
+                      style: TextStyle(fontSize: fontS),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HabitatCheck(
+                                  habitatList: rough_terrain,
+                                  habitatName: "Rough-Terrain")));
+                    })),
+            Padding(
+                padding: const EdgeInsets.all(insets),
+                child: ElevatedButton(
+                    child: const Text(
+                      "Sea",
+                      style: TextStyle(fontSize: fontS),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HabitatCheck(
+                                  habitatList: sea, habitatName: "Sea")));
+                    })),
+            Padding(
+                padding: const EdgeInsets.all(insets),
+                child: ElevatedButton(
+                    child: const Text(
+                      "Urban",
+                      style: TextStyle(fontSize: fontS),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HabitatCheck(
+                                  habitatList: urban, habitatName: "Urban")));
+                    })),
+            Padding(
+                padding: const EdgeInsets.all(insets),
+                child: ElevatedButton(
+                    child: const Text(
+                      "Water's-Edge",
+                      style: TextStyle(fontSize: fontS),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HabitatCheck(
+                                  habitatList: waters_edge,
+                                  habitatName: "Water's-Edge")));
                     })),
           ])),
     );
