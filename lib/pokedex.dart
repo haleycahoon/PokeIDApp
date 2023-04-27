@@ -109,7 +109,10 @@ class PokemonsList extends StatelessWidget {
                                         poke: pokemons[index],
                                       )));
                         },
-                        child: Text(pokemons[index].name))
+                        child: Text(
+                          pokemons[index].name,
+                          style: TextStyle(fontSize: 25),
+                        ))
                   ],
                 )),
           );

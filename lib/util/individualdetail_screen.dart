@@ -71,18 +71,23 @@ class _DetailScreenState extends State<DetailScreen> {
             pokeName(widget.poke.name),
             pokeFace(widget.poke.imageurl),
             pokeTypes(widget.poke.typeofpokemon),
-            Row(
-              children: [
-                pokeStats(
-                    widget.poke.hp,
-                    widget.poke.attack,
-                    widget.poke.defense,
-                    widget.poke.special_attack,
-                    widget.poke.special_defense,
-                    widget.poke.speed,
-                    widget.poke.total),
-                pokeDesc(widget.poke.xdescription)
-              ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  pokeStats(
+                      widget.poke.hp,
+                      widget.poke.attack,
+                      widget.poke.defense,
+                      widget.poke.special_attack,
+                      widget.poke.special_defense,
+                      widget.poke.speed,
+                      widget.poke.total),
+                  spacer(),
+                  spacer(),
+                  pokeDesc(widget.poke.xdescription)
+                ],
+              ),
             ),
           ],
         ));

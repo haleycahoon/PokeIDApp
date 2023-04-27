@@ -156,7 +156,7 @@ Widget pokeDesc(String xdescription) {
           padding:
               const EdgeInsets.only(left: 13, right: 13, top: 3, bottom: 3),
           child: SizedBox(
-            width: 250,
+            width: 230,
             height: 250,
             child: Align(
               alignment: Alignment.center,
