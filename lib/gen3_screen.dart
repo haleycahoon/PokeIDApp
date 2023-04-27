@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:async';
-
+import 'util/pokeclass.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -19,40 +19,6 @@ List<Pokemon> parsePhotos(String responseBody) {
   final parsed = jsonDecode(responseBody).cast<Map<String, dynamic>>();
   return parsed.map<Pokemon>((json) => Pokemon.fromJson(json)).toList();
 }
-
-class Pokemon {
-  final String name;
-  final String id;
-  final String imageurl;
-
-  const Pokemon({
-    required this.name,
-    required this.id,
-    required this.imageurl,
-  });
-
-  factory Pokemon.fromJson(Map<String, dynamic> json) {
-    return Pokemon(
-        name: json['name'] as String,
-        id: json['id'] as String,
-        imageurl: json["imageurl"] as String);
-  }
-}
-/*
-class Gen1Dex extends StatelessWidget {
-  const Gen1Dex({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    const appTitle = 'Generation 1: Kanto Region';
-
-    return const MaterialApp(
-      title: appTitle,
-      debugShowCheckedModeBanner: false,
-      home: Gen1Dex(title: appTitle),
-    );
-  }
-}*/
 
 class Gen3Dex extends StatefulWidget {
   const Gen3Dex({super.key, required this.title});
