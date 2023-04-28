@@ -4,15 +4,12 @@
 // This screen is where: The user may choose a habitat they wish to "explore".
 //
 // The user shall choose a habitat from a list.
-// Before moving onto the "habitat_checklist" screen,:
-// The habitat value retrieves a list of Pokemon that live in the habitat
-// The list will be saved
+// Before moving onto the "checklist" screen,
+// The list will be selected
 // and then  the list will be sent to the "habitat_checklist"
-// The user may press a "home button" to return to the main menu
 
 import 'package:flutter/material.dart';
 import 'package:pokedextest/util/checklist.dart';
-import 'package:pokedextest/util/checklist_tile.dart';
 
 List cave = [
   ["zubat", false],
@@ -413,43 +410,23 @@ List waters_edge = [
 /// 7. Urban
 /// 8. Water's-Edge
 ///
-/// //////////////////
-/// Functions
-/// /////////////////
-///
-///
-/// Name: summon list of pokemon
-///
-///
-///
-///
-///
-///
-///
-///
-///
-/// ////////////
-/// MAIN FUNCTION
-/// ////////////
-///
-///
-///\
-const double insets = 8;
-const double sizeW = 50;
-const double sizeL = 100;
-
 class HabitatConfirm extends StatefulWidget {
+  const HabitatConfirm({super.key});
+
   @override
   _HabitatConfirmState createState() => _HabitatConfirmState();
 }
 
+// Name: button()
+// Input: List (the habitat), String (the name of the habitat), BuildContext context
+// Output: Widget w/ ElevatedButton
 Widget button(List list, String title, BuildContext context) {
   return Padding(
       padding: const EdgeInsets.all(8),
       child: ElevatedButton(
           child: Text(
             title,
-            style: TextStyle(fontSize: 30),
+            style: const TextStyle(fontSize: 30),
           ),
           onPressed: () {
             Navigator.push(
@@ -464,6 +441,7 @@ class _HabitatConfirmState extends State<HabitatConfirm> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // background image
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage("assets/images/habitatconfirmbg.jpg"),

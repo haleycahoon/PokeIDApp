@@ -1,13 +1,10 @@
+// Name: main.dart
+// Launches the app, then sends the user to HomeScreen() (in home_screen.dart)
+
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:pokedextest/habitat_confirm.dart';
 import 'home_screen.dart';
 
 void main() {
-  // initialive the hive (database local)
-  //await Hive.initFlutter();
-
-  //
   runApp(Pokemon());
 }
 
@@ -15,8 +12,8 @@ class Pokemon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: HomeScreen(),
+        debugShowCheckedModeBanner: false, // remove debug banner
+        home: const HomeScreen(),
         theme: ThemeData(primarySwatch: Colors.red));
   }
 }

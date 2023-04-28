@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:pokedextest/pokedex.dart';
 import 'package:pokedextest/habitat_confirm.dart';
 import 'pokedex.dart';
 
@@ -14,8 +13,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
     return Scaffold(
         backgroundColor: Colors.white,
         body: Stack(children: [
@@ -40,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
               top: 145,
               left: 145,
               child: ElevatedButton(
-                  child: const Text("Generation 1"),
+                  child: const Text("Kanto Pokédex"),
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -55,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
               top: 195,
               left: 145,
               child: ElevatedButton(
-                  child: const Text("Generation 2"),
+                  child: const Text("Johto Pokédex"),
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -69,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
               top: 245,
               left: 145,
               child: ElevatedButton(
-                  child: const Text("Generation 3"),
+                  child: const Text("Hoenn Pokédex"),
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -81,9 +78,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   })),
           Positioned(
               top: 295,
-              left: 135,
+              left: 125,
               child: ElevatedButton(
-                  child: const Text("Habitat Confirm"),
+                  child: const Text("Safari Zone Checklists"),
                   onPressed: () {
                     Navigator.push(
                         context,
@@ -104,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
               top: 120,
               left: 40,
               child: Text(
-                'What Pokemon are you looking for?',
+                'What Pokémon are you looking for?',
                 style: TextStyle(
                   color: Colors.black.withOpacity(0.6),
                   fontWeight: FontWeight.bold,
@@ -112,12 +109,5 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ))
         ]));
-  }
-
-  void getPokemonInfo() {
-    var url = Uri.https("pokeapi.co", "/api/v2/pokemon/ditto");
-    http.get(url).then((value) {
-      print(value.body);
-    });
   }
 }

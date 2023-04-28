@@ -4,6 +4,8 @@ class Pokemon {
   final String name;
   final String id;
   final String imageurl;
+  final List<dynamic> typeofpokemon;
+  final String category;
   final String xdescription;
   final int hp;
   final int attack;
@@ -12,21 +14,13 @@ class Pokemon {
   final int special_defense;
   final int speed;
   final int total;
-  final List<dynamic> typeofpokemon;
-
-  String getName() {
-    return name;
-  }
-
-  String getId() {
-    return id;
-  }
 
   const Pokemon({
     required this.name,
     required this.id,
     required this.imageurl,
     required this.typeofpokemon,
+    required this.category,
     required this.xdescription,
     required this.hp,
     required this.attack,
@@ -42,6 +36,7 @@ class Pokemon {
       name: json['name'] as String,
       id: json['id'] as String,
       imageurl: json["imageurl"] as String,
+      category: json["category"],
       typeofpokemon: json['typeofpokemon'] as List<dynamic>,
       xdescription: json['xdescription'],
       hp: json['hp'],

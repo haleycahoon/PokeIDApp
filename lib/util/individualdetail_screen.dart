@@ -15,38 +15,9 @@
 
 // make datamembers to represent those things
 
-// ignore_for_file: prefer_interpolation_to_compose_strings
-
-//
-import 'dart:convert';
-import 'dart:ffi';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:http/http.dart' as http;
-import 'package:pokedextest/util/pokeclass.dart';
 import 'detail_util.dart';
 import 'pokeclass.dart';
-
-// sample pokemon
-//String name = "Eevee";
-String number = "#133";
-String picture =
-    "https://assets.pokemon.com/assets/cms2/img/pokedex/full/133.png";
-List<dynamic> types = ["normal", null];
-String height = "1' 00\"";
-String weight = "14.3 lbs";
-String category = "Transform";
-int hp = 20;
-int attack = 30;
-int defense = 20;
-int special_attack = 20;
-int special_defense = 30;
-int speed = 30;
-int total = 150;
-String xdescription =
-    "Eevee has an unstable genetic makeup that suddenly mutates due to the environment in which it lives. Radiation from various stones causes this Pok\u00e9mon to evolve.";
-
-// Helper Methods
 
 class DetailScreen extends StatefulWidget {
   final Pokemon poke;
@@ -63,8 +34,7 @@ class _DetailScreenState extends State<DetailScreen> {
         // define the BG color of the whole page
         backgroundColor: Color.fromARGB(255, 255, 165, 165),
         // appBar on the top of the screen "title bar"
-        // tells you the name of the pokemon
-        appBar: AppBar(title: Text(widget.poke.getName())),
+        appBar: AppBar(title: Text("The ${widget.poke.category} Pokémon")),
         body: Column(
           children: [
             logo(),
