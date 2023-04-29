@@ -1,9 +1,13 @@
-import 'dart:convert';
-import 'dart:ffi';
-import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import 'package:http/http.dart' as http;
+// Name: detail_util.dart
+// Functions: logo(), pokeName(), pokeFace(), pokeTypes(), statBox(), spacer(), pokeDesc(), pokeStats()
+// Description: Widgets to construct individualdetailscreen.dart
 
+import 'package:flutter/material.dart';
+
+// Name: logo()
+// Input: N/A
+// Output: Widget (row)
+// Description: Displays the pokeID logo
 Widget logo() {
   return Row(
     children: [
@@ -24,6 +28,10 @@ Widget logo() {
   );
 }
 
+// Name: pokeName()
+// Input: String (name of the pokemon)
+// Output: Widget column
+// Description: Returns a right alligned text of the pokemon's name
 Widget pokeName(String name) {
   return Column(
     children: [
@@ -43,6 +51,10 @@ Widget pokeName(String name) {
   );
 }
 
+// Name: pokeFace()
+// Input: String (image url)
+// Output: Widget column
+// Description: returns a center alligned 300x300 image of the target pokemon
 Widget pokeFace(String picture) {
   return Column(children: [
     Align(
@@ -56,6 +68,11 @@ Widget pokeFace(String picture) {
   ]);
 }
 
+// Name: pokeTypes()
+// Input: List<dynamic> (contains up to 2 Strings of the type)
+// Output: Widget Text and Container
+// Description: returns a text saying "Type"
+//              Underneath that is the types listed inside of a white background container w/ round edges
 Widget pokeTypes(List<dynamic> types) {
   String text;
   (types.length > 1) ? text = types[0] + "     " + types[1] : text = types[0];
@@ -94,6 +111,11 @@ Widget pokeTypes(List<dynamic> types) {
   );
 }
 
+// Name: statBox()
+// Input: String (name of the stat), Int (value of the stat)
+// Output: Widget container
+// Description: for use in pokeStats()
+//              Returns the stat's name and value in a white box with rounded edges
 Widget statBox(String statName, int stat) {
   return Container(
     decoration: const BoxDecoration(
@@ -111,6 +133,10 @@ Widget statBox(String statName, int stat) {
   );
 }
 
+// Name: spacer()
+// Input: N/A
+// Output: Widget sizedbox
+// Descripton: a blank sized box for consistent formatting purposes
 Widget spacer() {
   return const SizedBox(
     width: 5,
@@ -118,6 +144,10 @@ Widget spacer() {
   );
 }
 
+// Name: pokeStats()
+// Input: seven int values representing the 6 stats + their total
+// Output: Widget column
+// Description: Displays the stats in a column format.
 Widget pokeStats(int hp, int attack, int defense, int special_attack,
     int special_defense, int speed, int total) {
   return Column(
@@ -145,6 +175,10 @@ Widget pokeStats(int hp, int attack, int defense, int special_attack,
   );
 }
 
+// Name: pokeDesc()
+// Input: String (the pokedex entry)
+// Output: Widget column/container
+// Description: Displays the pokedex entry inside of a big white box with rounded edges
 Widget pokeDesc(String xdescription) {
   return Column(
     children: [

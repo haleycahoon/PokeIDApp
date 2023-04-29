@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import 'home_screen.dart';
 
 void main() {
-  runApp(Pokemon());
+  runApp(const Pokemon());
 }
 
 class Pokemon extends StatelessWidget {
+  const Pokemon({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

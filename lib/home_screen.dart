@@ -1,5 +1,8 @@
+// Name: home_screen.dart
+// Function: HomeScreen()
+// Description: Home screen in which the user can choose where to go. All back buttons return to here
+
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:pokedextest/habitat_confirm.dart';
 import 'pokedex.dart';
 
@@ -86,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         context,
                         MaterialPageRoute(
                             //builder: (context) => const HabitatConfirm()));
-                            builder: (context) => HabitatConfirm()));
+                            builder: (context) => const HabitatConfirm()));
                   })),
           Positioned(
             top: 40,

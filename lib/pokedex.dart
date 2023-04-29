@@ -1,13 +1,12 @@
 // Name: pokedex.dart
-// Function: Gen2Dex
+// Function: Gen2Dex(), PokemonsList
 // Description: Displays a list of pokemon with accompanying buttons. The user can press the button
 //              and be taken to a page which gives them a closer description of the pokemon DetailScreen() (in individualdetail_screen.dart)
-//
 
 import 'dart:convert';
 import 'dart:async';
 import 'util/pokeclass.dart';
-import 'util/individualdetail_screen.dart';
+import 'individualdetail_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -57,12 +56,16 @@ class _Gen2DexState extends State<Gen2Dex> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // title and back button
       appBar: AppBar(
         title: Text(widget.title),
         leading: BackButton(
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
+      // Grabs the list of pokemon
+      // and runs the function PokemonsList in order to create a scrollable list of pokemon
+      // within the range of the startingIdx and the endingIdx
       body: FutureBuilder<List<Pokemon>>(
         future: fetchPhotos(http.Client()),
         builder: (context, snapshot) {
@@ -87,7 +90,8 @@ class _Gen2DexState extends State<Gen2Dex> {
   }
 }
 
-// This is the list which we scroll through
+// Name: PokemonsList()
+// Input: List<pokemon>, int startingIdx (pokedex number we want to start at), int endingIdx(pokedex number we want to end at)
 class PokemonsList extends StatelessWidget {
   const PokemonsList(
       {super.key,
@@ -101,6 +105,7 @@ class PokemonsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // build a grid 2 items wide
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         mainAxisSpacing: 10,
@@ -118,7 +123,9 @@ class PokemonsList extends StatelessWidget {
                 body: Column(
                   children: [
                     Expanded(child: Image.network(pokemons[index].imageurl)),
+                    // button with the pokemon's name on it
                     ElevatedButton(
+                        // when the button is pressed, navigate to the individual detail screen of that pokemon
                         onPressed: () {
                           Navigator.push(
                               context,
@@ -129,7 +136,9 @@ class PokemonsList extends StatelessWidget {
                         },
                         child: Text(
                           pokemons[index].name,
-                          style: const TextStyle(fontSize: 25),
+                          style: const TextStyle(
+                            fontSize: 25,
+                          ),
                         ))
                   ],
                 )),

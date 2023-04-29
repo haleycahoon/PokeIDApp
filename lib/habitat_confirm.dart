@@ -1,5 +1,5 @@
-// Name: habitat_confirm:
-// based on: https://www.youtube.com/watch?v=mMgr47QBZWA
+// Name: habitat_confirm.dart
+// Function: HabitatConfirm()
 //
 // This screen is where: The user may choose a habitat they wish to "explore".
 //

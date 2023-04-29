@@ -1,4 +1,6 @@
-import 'package:pokedextest/habitat_confirm.dart';
+// Name: pokeclass.dart
+// Details: constructs a pokemon object from json
+//          For use in pokedex.dart
 
 class Pokemon {
   final String name;
