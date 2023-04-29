@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             builder: (context) => const Gen2Dex(
                                 startingIdx: 251,
                                 endingIdx: 386,
-                                title: 'Generation 3: Hoenn')));
+                                title: 'Generation 3: Hoenn Region')));
                   })),
           Positioned(
               top: 295,

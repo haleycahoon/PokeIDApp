@@ -21,13 +21,12 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Color.fromARGB(255, 255, 151, 143),
         // define the BG color of the whole page
-        backgroundColor: const Color.fromARGB(255, 255, 165, 165),
         // appBar on the top of the screen "title bar"
         appBar: AppBar(title: Text("The ${widget.poke.category} Pokémon")),
         body: Column(
           children: [
-            logo(),
             pokeName(widget.poke.name),
             pokeFace(widget.poke.imageurl),
             pokeTypes(widget.poke.typeofpokemon),

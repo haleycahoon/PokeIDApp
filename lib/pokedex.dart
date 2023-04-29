@@ -55,36 +55,42 @@ class Gen2Dex extends StatefulWidget {
 class _Gen2DexState extends State<Gen2Dex> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // title and back button
-      appBar: AppBar(
-        title: Text(widget.title),
-        leading: BackButton(
-          onPressed: () => Navigator.of(context).pop(),
+    return Container(
+      color: Colors.white,
+      child: Scaffold(
+        backgroundColor: const Color.fromARGB(133, 154, 255, 181),
+        extendBodyBehindAppBar: true,
+        // title and back button
+        appBar: AppBar(
+          title: Text(widget.title),
+          backgroundColor: const Color.fromARGB(135, 5, 204, 55),
+          leading: BackButton(
+            onPressed: () => Navigator.of(context).pop(),
+          ),
         ),
-      ),
-      // Grabs the list of pokemon
-      // and runs the function PokemonsList in order to create a scrollable list of pokemon
-      // within the range of the startingIdx and the endingIdx
-      body: FutureBuilder<List<Pokemon>>(
-        future: fetchPhotos(http.Client()),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return const Center(
-              child: Text('An error has occurred!'),
-            );
-          } else if (snapshot.hasData) {
-            return PokemonsList(
-              pokemons: snapshot.data!,
-              startingIdx: widget.startingIdx,
-              endingIdx: widget.endingIdx,
-            );
-          } else {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
+        // Grabs the list of pokemon
+        // and runs the function PokemonsList in order to create a scrollable list of pokemon
+        // within the range of the startingIdx and the endingIdx
+        body: FutureBuilder<List<Pokemon>>(
+          future: fetchPhotos(http.Client()),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return const Center(
+                child: Text('An error has occurred!'),
+              );
+            } else if (snapshot.hasData) {
+              return PokemonsList(
+                pokemons: snapshot.data!,
+                startingIdx: widget.startingIdx,
+                endingIdx: widget.endingIdx,
+              );
+            } else {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
+        ),
       ),
     );
   }
@@ -108,8 +114,8 @@ class PokemonsList extends StatelessWidget {
     // build a grid 2 items wide
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        mainAxisSpacing: 10,
-        crossAxisSpacing: 2,
+        mainAxisSpacing: 0,
+        crossAxisSpacing: 0,
         crossAxisCount: 2,
       ),
       itemCount: endingIdx - startingIdx,
@@ -119,9 +125,11 @@ class PokemonsList extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Scaffold(
+                backgroundColor: const Color.fromARGB(134, 204, 255, 217),
                 resizeToAvoidBottomInset: false,
                 body: Column(
                   children: [
+                    const Align(alignment: Alignment(0.0, -0.0)),
                     Expanded(child: Image.network(pokemons[index].imageurl)),
                     // button with the pokemon's name on it
                     ElevatedButton(
