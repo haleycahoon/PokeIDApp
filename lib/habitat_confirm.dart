@@ -10,6 +10,8 @@
 
 // ignore_for_file: non_constant_identifier_names
 
+// HABITAT INFORMATION COMES FROM POKEAPI: https://pokeapi.co/api/v2/pokemon-habitat/1    (1,2,3)
+
 import 'package:flutter/material.dart';
 import 'package:pokedextest/util/checklist.dart';
 
