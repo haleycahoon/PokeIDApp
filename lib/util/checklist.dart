@@ -31,25 +31,29 @@ class _HabitatCheckState extends State<HabitatCheck> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // define the BG color of the whole page
-      backgroundColor: Colors.red[50],
-      // appBar on the top of the screen "title bar"
-      appBar: AppBar(
-        title: Text('Safari Zone: ${widget.habitatName}'),
-      ),
+    return Container(
+      color: Colors.white,
+      child: Scaffold(
+        // define the BG color of the whole page
+        backgroundColor: const Color.fromARGB(133, 154, 255, 181),
+        // appBar on the top of the screen "title bar"
+        appBar: AppBar(
+          title: Text('Safari Zone: ${widget.habitatName}'),
+          backgroundColor: const Color.fromARGB(135, 5, 204, 55),
+        ),
 
-      // loops through every item in a list of pokemon names
-      // and creates a checkbox for them
-      body: ListView.builder(
-        itemCount: widget.habitatList.length,
-        itemBuilder: (context, i) {
-          return ChecklistTile(
-            pokeName: widget.habitatList[i][0],
-            pokeSeen: widget.habitatList[i][1],
-            onChanged: (value) => checkboxChecked(value, i),
-          );
-        },
+        // loops through every item in a list of pokemon names
+        // and creates a checkbox for them
+        body: ListView.builder(
+          itemCount: widget.habitatList.length,
+          itemBuilder: (context, i) {
+            return ChecklistTile(
+              pokeName: widget.habitatList[i][0],
+              pokeSeen: widget.habitatList[i][1],
+              onChanged: (value) => checkboxChecked(value, i),
+            );
+          },
+        ),
       ),
     );
   }

@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: TextStyle(
                   color: Colors.black.withOpacity(0.6),
                   fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  fontSize: 40,
                 ),
               )),
           Positioned(

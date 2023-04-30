@@ -453,6 +453,7 @@ class _HabitatConfirmState extends State<HabitatConfirm> {
           // appBar on the top of the screen "title bar"
           appBar: AppBar(
             title: const Text('Safari Zone'),
+            backgroundColor: const Color.fromARGB(135, 5, 204, 55),
           ),
           backgroundColor: const Color.fromARGB(0, 255, 255, 255),
           body: Align(

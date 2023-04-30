@@ -116,12 +116,11 @@ class _ChecklistTileState extends State<ChecklistTile> {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(25),
-
         // Future builder handles the image
         child: Container(
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-                color: const Color.fromARGB(64, 255, 0, 0),
+                color: const Color.fromARGB(166, 1, 187, 47),
                 borderRadius: BorderRadius.circular(10)),
             child: Row(children: [
               Checkbox(value: widget.pokeSeen, onChanged: widget.onChanged),
