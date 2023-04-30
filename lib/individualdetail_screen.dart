@@ -21,7 +21,6 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
         backgroundColor: const Color.fromARGB(255, 255, 151, 143),
         // define the BG color of the whole page
         // appBar on the top of the screen "title bar"

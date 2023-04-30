@@ -54,14 +54,14 @@ Widget pokeName(String name) {
 // Name: pokeFace()
 // Input: String (image url)
 // Output: Widget column
-// Description: returns a center alligned 300x300 image of the target pokemon
+// Description: returns a center alligned 175x175 image of the target pokemon
 Widget pokeFace(String picture) {
   return Column(children: [
     Align(
       alignment: Alignment.center,
       child: SizedBox(
-        height: 175,
-        width: 175,
+        height: 300,
+        width: 300,
         child: Image.network(picture),
       ),
     )

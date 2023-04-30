@@ -450,7 +450,6 @@ class _HabitatConfirmState extends State<HabitatConfirm> {
         ),
       ),
       child: Scaffold(
-          resizeToAvoidBottomInset: false,
           // appBar on the top of the screen "title bar"
           appBar: AppBar(
             title: const Text('Safari Zone'),
