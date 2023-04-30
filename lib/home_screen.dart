@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const Gen2Dex(
+                            builder: (context) => const Dex(
                                   startingIdx: 0,
                                   endingIdx: 151,
                                   title: 'Generation 1: Kanto Region',
@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const Gen2Dex(
+                            builder: (context) => const Dex(
                                 startingIdx: 151,
                                 endingIdx: 251,
                                 title: 'Generation 2: Johto Region')));
@@ -74,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const Gen2Dex(
+                            builder: (context) => const Dex(
                                 startingIdx: 251,
                                 endingIdx: 386,
                                 title: 'Generation 3: Hoenn Region')));

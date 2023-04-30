@@ -12,8 +12,14 @@ import 'package:pokedextest/util/checklist_tile.dart';
 class HabitatCheck extends StatefulWidget {
   final List habitatList;
   final String habitatName;
+  final Color dark;
+  final Color light;
   const HabitatCheck(
-      {super.key, required this.habitatList, required this.habitatName});
+      {super.key,
+      required this.habitatList,
+      required this.habitatName,
+      required this.dark,
+      required this.light});
 
   @override
   State<HabitatCheck> createState() => _HabitatCheckState();
@@ -35,11 +41,11 @@ class _HabitatCheckState extends State<HabitatCheck> {
       color: Colors.white,
       child: Scaffold(
         // define the BG color of the whole page
-        backgroundColor: const Color.fromARGB(133, 154, 255, 181),
+        backgroundColor: widget.light,
         // appBar on the top of the screen "title bar"
         appBar: AppBar(
           title: Text('Safari Zone: ${widget.habitatName}'),
-          backgroundColor: Color.fromARGB(255, 5, 204, 55),
+          backgroundColor: widget.dark,
         ),
 
         // loops through every item in a list of pokemon names
@@ -48,10 +54,10 @@ class _HabitatCheckState extends State<HabitatCheck> {
           itemCount: widget.habitatList.length,
           itemBuilder: (context, i) {
             return ChecklistTile(
-              pokeName: widget.habitatList[i][0],
-              pokeSeen: widget.habitatList[i][1],
-              onChanged: (value) => checkboxChecked(value, i),
-            );
+                pokeName: widget.habitatList[i][0],
+                pokeSeen: widget.habitatList[i][1],
+                onChanged: (value) => checkboxChecked(value, i),
+                dark: widget.dark);
           },
         ),
       ),

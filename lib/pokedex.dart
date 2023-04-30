@@ -1,5 +1,5 @@
 // Name: pokedex.dart
-// Function: Gen2Dex(), PokemonsList
+// Function: Dex(), PokemonsList
 // Description: Displays a list of pokemon with accompanying buttons. The user can press the button
 //              and be taken to a page which gives them a closer description of the pokemon DetailScreen() (in individualdetail_screen.dart)
 
@@ -33,10 +33,11 @@ List<Pokemon> parsePhotos(String responseBody) {
   return parsed.map<Pokemon>((json) => Pokemon.fromJson(json)).toList();
 }
 
-class Gen2Dex extends StatefulWidget {
+// Name:
+class Dex extends StatefulWidget {
   // Constructor
   // Input String title, int startingIdx, int endingIdx
-  const Gen2Dex(
+  const Dex(
       {super.key,
       required this.title,
       required this.startingIdx,
@@ -47,23 +48,22 @@ class Gen2Dex extends StatefulWidget {
   final int startingIdx;
   final int endingIdx;
 
-  // createState based on the below class, _Gen2DexState
+  // createState based on the below class, _DexState
   @override
-  State<Gen2Dex> createState() => _Gen2DexState();
+  State<Dex> createState() => _DexState();
 }
 
-class _Gen2DexState extends State<Gen2Dex> {
+class _DexState extends State<Dex> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: Color.fromARGB(0, 255, 178, 178),
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(133, 154, 255, 181),
+        backgroundColor: Color.fromARGB(255, 255, 204, 204),
         extendBodyBehindAppBar: true,
         // title and back button
         appBar: AppBar(
           title: Text(widget.title),
-          backgroundColor: Color.fromARGB(255, 5, 204, 55),
           leading: BackButton(
             onPressed: () => Navigator.of(context).pop(),
           ),
@@ -125,30 +125,35 @@ class PokemonsList extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Scaffold(
-                backgroundColor: const Color.fromARGB(134, 204, 255, 217),
+                backgroundColor: Color.fromARGB(0, 0, 0, 0),
                 resizeToAvoidBottomInset: false,
-                body: Column(
-                  children: [
-                    const Align(alignment: Alignment(0.0, -0.0)),
-                    Expanded(child: Image.network(pokemons[index].imageurl)),
-                    // button with the pokemon's name on it
-                    ElevatedButton(
-                        // when the button is pressed, navigate to the individual detail screen of that pokemon
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => DetailScreen(
-                                        poke: pokemons[index],
-                                      )));
-                        },
-                        child: Text(
-                          pokemons[index].name,
-                          style: const TextStyle(
-                            fontSize: 25,
-                          ),
-                        ))
-                  ],
+                body: Container(
+                  decoration: const BoxDecoration(
+                      color: Color.fromARGB(44, 203, 110, 110),
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  child: Column(
+                    children: [
+                      const Align(alignment: Alignment(0.0, -0.0)),
+                      Expanded(child: Image.network(pokemons[index].imageurl)),
+                      // button with the pokemon's name on it
+                      ElevatedButton(
+                          // when the button is pressed, navigate to the individual detail screen of that pokemon
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => DetailScreen(
+                                          poke: pokemons[index],
+                                        )));
+                          },
+                          child: Text(
+                            pokemons[index].name,
+                            style: const TextStyle(
+                              fontSize: 25,
+                            ),
+                          ))
+                    ],
+                  ),
                 )),
           );
         }

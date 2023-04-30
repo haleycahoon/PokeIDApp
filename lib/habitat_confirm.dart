@@ -8,6 +8,8 @@
 // The list will be selected
 // and then  the list will be sent to the "habitat_checklist"
 
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:pokedextest/util/checklist.dart';
 
@@ -39,6 +41,8 @@ List cave = [
   ["snorunt", false],
   ["glalie", false],
 ];
+Color caveDark = const Color.fromARGB(255, 132, 132, 132);
+Color caveLight = const Color.fromARGB(255, 188, 188, 188);
 
 List forest = [
   ["caterpie", false],
@@ -112,6 +116,8 @@ List forest = [
   ["tropius", false],
   ["sudowoodo", false],
 ];
+Color forestDark = Color.fromARGB(255, 114, 179, 116);
+Color forestLight = const Color.fromARGB(255, 190, 254, 192);
 
 List grassland = [
   ["bulbasaur", false],
@@ -192,6 +198,8 @@ List grassland = [
   ["roselia", false],
   ["chimecho", false],
 ];
+Color grasslandDark = Color.fromARGB(255, 110, 184, 147);
+Color grasslandLight = const Color.fromARGB(255, 180, 253, 216);
 
 List mountain = [
   ["charmander", false],
@@ -239,6 +247,8 @@ List mountain = [
   ["absol", false],
   ["snorlax", false],
 ];
+Color mountainDark = const Color.fromARGB(255, 185, 177, 111);
+Color mountainLight = const Color.fromARGB(255, 253, 241, 192);
 
 List rough_terrain = [
   ["spearow", false],
@@ -268,6 +278,8 @@ List rough_terrain = [
   ["metang", false],
   ["metagross", false],
 ];
+Color rough_terrainDark = Color.fromARGB(255, 167, 155, 131);
+Color rough_terrainLight = const Color.fromARGB(255, 225, 214, 188);
 
 List sea = [
   ["tentacool", false],
@@ -309,6 +321,8 @@ List sea = [
   ["huntail", false],
   ["gorebyss", false],
 ];
+Color seaDark = Color.fromARGB(255, 111, 160, 190);
+Color seaLight = const Color.fromARGB(255, 174, 220, 248);
 
 List urban = [
   ["meowth", false],
@@ -349,6 +363,8 @@ List urban = [
   ["blissey", false],
   ["mr-mime", false],
 ];
+Color urbanDark = const Color.fromARGB(255, 168, 128, 189);
+Color urbanLight = const Color.fromARGB(255, 226, 186, 247);
 
 List waters_edge = [
   ["squirtle", false],
@@ -397,6 +413,8 @@ List waters_edge = [
   ["feebas", false],
   ["milotic", false],
 ];
+Color waters_edgeDark = Color.fromARGB(255, 140, 164, 202);
+Color waters_edgeLight = Color.fromARGB(255, 196, 223, 251);
 
 /////////////
 /// List of habitats
@@ -419,9 +437,10 @@ class HabitatConfirm extends StatefulWidget {
 }
 
 // Name: button()
-// Input: List (the habitat), String (the name of the habitat), BuildContext context
+// Input: List (the habitat), String (the name of the habitat), Color (darker), Color (lighter), BuildContext context
 // Output: Widget w/ ElevatedButton
-Widget button(List list, String title, BuildContext context) {
+Widget button(
+    List list, String title, Color dark, Color light, BuildContext context) {
   return Padding(
       padding: const EdgeInsets.all(8),
       child: ElevatedButton(
@@ -433,8 +452,12 @@ Widget button(List list, String title, BuildContext context) {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) =>
-                        HabitatCheck(habitatList: list, habitatName: title)));
+                    builder: (context) => HabitatCheck(
+                          habitatList: list,
+                          habitatName: title,
+                          dark: dark,
+                          light: light,
+                        )));
           }));
 }
 
@@ -453,7 +476,6 @@ class _HabitatConfirmState extends State<HabitatConfirm> {
           // appBar on the top of the screen "title bar"
           appBar: AppBar(
             title: const Text('Safari Zone'),
-            backgroundColor: Color.fromARGB(255, 5, 204, 55),
           ),
           backgroundColor: const Color.fromARGB(0, 255, 255, 255),
           body: Align(
@@ -470,19 +492,23 @@ class _HabitatConfirmState extends State<HabitatConfirm> {
                       style: TextStyle(
                         color: Colors.black.withOpacity(0.6),
                         fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                        fontSize: 30,
                       ),
                       textAlign: TextAlign.center,
                     ),
                   )),
-              button(cave, "Cave", context),
-              button(forest, "Forest", context),
-              button(grassland, "Grassland", context),
-              button(mountain, "Mountain", context),
-              button(rough_terrain, "Rough-Terrain", context),
-              button(sea, "Sea", context),
-              button(urban, "Urban", context),
-              button(waters_edge, "Water's-Edge", context),
+              button(cave, "Cave", caveDark, caveLight, context),
+              button(forest, "Forest", forestDark, forestLight, context),
+              button(grassland, "Grassland", grasslandDark, grasslandLight,
+                  context),
+              button(
+                  mountain, "Mountain", mountainDark, mountainLight, context),
+              button(rough_terrain, "Rough-Terrain", rough_terrainDark,
+                  rough_terrainLight, context),
+              button(sea, "Sea", seaDark, seaLight, context),
+              button(urban, "Urban", urbanDark, urbanLight, context),
+              button(waters_edge, "Water's-Edge", waters_edgeDark,
+                  waters_edgeLight, context),
             ]),
           )),
     );

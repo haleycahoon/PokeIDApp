@@ -31,14 +31,17 @@ Widget logo() {
 // Name: pokeName()
 // Input: String (name of the pokemon)
 // Output: Widget column
-// Description: Returns a right alligned text of the pokemon's name
+// Description: Returns a center alligned text of the pokemon's name
 Widget pokeName(String name) {
   return Column(
     children: [
+      const SizedBox(
+        height: 15,
+      ),
       Padding(
         padding: const EdgeInsets.only(right: 16.0),
         child: Align(
-          alignment: Alignment.centerRight,
+          alignment: Alignment.center,
           child: Text(name,
               style: TextStyle(
                 color: Colors.black.withOpacity(0.6),

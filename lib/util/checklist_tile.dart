@@ -53,12 +53,15 @@ class ChecklistTile extends StatefulWidget {
   // when the checkbox is ticked this changes the pokeSeen value
   Function(bool?)? onChanged;
 
+  final Color dark;
+
 // constructor for the tile
   ChecklistTile(
       {super.key,
       required this.pokeName,
       required this.pokeSeen,
-      required this.onChanged});
+      required this.onChanged,
+      required this.dark});
 
   // create the state
   @override
@@ -120,8 +123,7 @@ class _ChecklistTileState extends State<ChecklistTile> {
         child: Container(
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-                color: Color.fromARGB(255, 1, 187, 47),
-                borderRadius: BorderRadius.circular(10)),
+                color: widget.dark, borderRadius: BorderRadius.circular(10)),
             child: Row(children: [
               Checkbox(value: widget.pokeSeen, onChanged: widget.onChanged),
               // a picture of the target pokemon
