@@ -164,6 +164,8 @@ Widget pokeStats(int hp, int attack, int defense, int special_attack,
       spacer(),
       statBox("Attack", attack),
       spacer(),
+      statBox("Defense", defense),
+      spacer(),
       statBox("Sp. Atk", special_attack),
       spacer(),
       statBox("Sp. Def", special_defense),
@@ -190,7 +192,7 @@ Widget pokeDesc(String xdescription) {
           padding:
               const EdgeInsets.only(left: 13, right: 13, top: 3, bottom: 3),
           child: SizedBox(
-            width: 230,
+            width: 220,
             height: 250,
             child: Align(
               alignment: Alignment.center,
