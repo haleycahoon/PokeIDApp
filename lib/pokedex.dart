@@ -15,6 +15,8 @@ import 'package:http/http.dart' as http;
 // Input: http.Client
 // Output: List<Pokemon>
 // Description: Asynchrous. Fetches an entire json to send to another function
+// CREDIT FOR THIS JSON FILE GOES TO GITHUB USER HUNGPS: https://raw.githubusercontent.com/hungps/flutter_pokedex/master/assets/pokemons.json
+// This app only utilizes the first three generations.
 Future<List<Pokemon>> fetchPhotos(http.Client client) async {
   final response = await client.get(Uri.parse(
       'https://raw.githubusercontent.com/hungps/flutter_pokedex/master/assets/pokemons.json'));

@@ -1,6 +1,9 @@
 // Name: home_screen.dart
 // Function: HomeScreen()
 // Description: Home screen in which the user can choose where to go. All back buttons return to here
+// Poke Logo comes from: https://www.pngwing.com/en/free-png-bntdq
+// Safari Wallpaper: https://www.desktopbackground.org/wallpaper/cute-jigglypuff-wallpaper-take-a-look-on-my-instagram-by-812775
+// Homepage Wallpaper: https://www.pinterest.com/pin/29977153759623465/
 
 import 'package:flutter/material.dart';
 import 'package:pokedextest/habitat_confirm.dart';
