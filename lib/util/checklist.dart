@@ -39,7 +39,7 @@ class _HabitatCheckState extends State<HabitatCheck> {
         // appBar on the top of the screen "title bar"
         appBar: AppBar(
           title: Text('Safari Zone: ${widget.habitatName}'),
-          backgroundColor: const Color.fromARGB(135, 5, 204, 55),
+          backgroundColor: Color.fromARGB(255, 5, 204, 55),
         ),
 
         // loops through every item in a list of pokemon names

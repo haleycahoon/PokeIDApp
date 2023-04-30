@@ -120,7 +120,7 @@ class _ChecklistTileState extends State<ChecklistTile> {
         child: Container(
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-                color: const Color.fromARGB(166, 1, 187, 47),
+                color: Color.fromARGB(255, 1, 187, 47),
                 borderRadius: BorderRadius.circular(10)),
             child: Row(children: [
               Checkbox(value: widget.pokeSeen, onChanged: widget.onChanged),

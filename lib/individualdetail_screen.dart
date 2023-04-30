@@ -28,7 +28,7 @@ class _DetailScreenState extends State<DetailScreen> {
           // appBar on the top of the screen "title bar"
           appBar: AppBar(
               title: Text("The ${widget.poke.category} Pokémon"),
-              backgroundColor: const Color.fromARGB(135, 5, 204, 55)),
+              backgroundColor: Color.fromARGB(255, 5, 204, 55)),
           body: Column(
             children: [
               pokeName(widget.poke.name),

@@ -63,7 +63,7 @@ class _Gen2DexState extends State<Gen2Dex> {
         // title and back button
         appBar: AppBar(
           title: Text(widget.title),
-          backgroundColor: const Color.fromARGB(135, 5, 204, 55),
+          backgroundColor: Color.fromARGB(255, 5, 204, 55),
           leading: BackButton(
             onPressed: () => Navigator.of(context).pop(),
           ),
