@@ -60,8 +60,8 @@ Widget pokeFace(String picture) {
     Align(
       alignment: Alignment.center,
       child: SizedBox(
-        height: 300,
-        width: 300,
+        height: 175,
+        width: 175,
         child: Image.network(picture),
       ),
     )

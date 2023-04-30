@@ -450,6 +450,7 @@ class _HabitatConfirmState extends State<HabitatConfirm> {
         ),
       ),
       child: Scaffold(
+          resizeToAvoidBottomInset: false,
           // appBar on the top of the screen "title bar"
           appBar: AppBar(
             title: const Text('Safari Zone'),
@@ -469,7 +470,7 @@ class _HabitatConfirmState extends State<HabitatConfirm> {
                       style: TextStyle(
                         color: Colors.black.withOpacity(0.6),
                         fontWeight: FontWeight.bold,
-                        fontSize: 40,
+                        fontSize: 20,
                       ),
                       textAlign: TextAlign.center,
                     ),
