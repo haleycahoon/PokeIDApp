@@ -1,2 +1,1 @@
-"# PokeID" 
-"# PokeID" 
+This Pokédex app was developed using Flutter and integrated with the PokeAPI. This mobile app provides users with six functional screens, including a Home Screen and dedicated sections for Generations 1, 2, and 3, where users can explore detailed information about individual Pokémon including images, descriptions, and statistics. Users can also maintain a checklist of Pokémon encountered in specific habitats on the Safari Zone page.
